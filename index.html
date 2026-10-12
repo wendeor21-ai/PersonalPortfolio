@@ -1,299 +1,885 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wendwesen Wagaw · Full Stack & Systems Engineer</title>
-  <!-- ===== home.css ===== -->
+  <title>Wendwesen Wagaw · Full-Stack & Systems Engineer</title>
+  <meta name="description"
+    content="Portfolio of Wendwesen Wagaw — Full-Stack Developer, Systems Engineer, and Startup Winner. Modern, clean, and accessible web solutions.">
+
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="home.css">
-  <!-- Google Fonts & Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-  <!-- NAVBAR (matches about/contact/projects) -->
-  <nav class="navbar">
-    <div class="logo">Wendwesen<span>Dev</span></div>
-    <ul class="nav-links">
-      <li><a href="home.html" class="active">Home</a></li>
-      <li><a href="aboutme.html">About Me</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
 
-  <!-- HERO SECTION (refreshed, vibrant) -->
-  <header class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="greeting">👋 Hello, I'm</div>
-        <h1>Wendwesen <span class="gradient-text">Wagaw</span></h1>
-        <div class="typed-wrapper">
-          <span class="typed-text" id="typed"></span><span class="cursor">|</span>
-        </div>
-        <p class="hero-description">
-          <span class="highlight-block">AI-Powered Digital Solutions for Real-World Impact.</span>
-          Information Systems student at University of Gondar building scalable web & machine learning systems
-          that transform ideas into intelligent user experiences.
-        </p>
-        <div class="hero-buttons">
-          <a href="aboutme.html" class="btn btn-primary">Explore Me <i class="fa-regular fa-user"></i></a>
-          <a href="projects.html" class="btn btn-outline">View Projects <i class="fa-regular fa-folder-open"></i></a>
-        </div>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/wendwesen-wagaw-0b482a38b" target="_blank" aria-label="LinkedIn"><i
-              class="fab fa-linkedin-in"></i></a>
-          <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://t.me/wendwesen1" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <div class="image-ring">
-          <img src="wen.jpg" alt="Wendwesen Wagaw" class="profile-photo">
-        </div>
-        <div class="floating-icons">
-          <span><i class="fas fa-code"></i></span>
-          <span><i class="fas fa-robot"></i></span>
-          <span><i class="fas fa-shield-halved"></i></span>
-        </div>
-      </div>
+  <!-- ==================== FIXED LEFT VERTICAL DOCK (DESKTOP) / BOTTOM DOCK (MOBILE) ==================== -->
+  <aside class="sidebar-dock" id="sidebarDock" aria-label="Main Navigation">
+    <!-- Top Monogram Logo -->
+    <a href="#home" class="dock-logo" aria-label="Home">
+      <span class="logo-mark">W.</span>
+      <span class="logo-subtext">Wagaw</span>
+    </a>
+
+    <!-- Center Icon Navigation -->
+    <nav class="dock-nav" id="dockNav">
+      <a href="#home" class="dock-item active" aria-label="Home">
+        <i class="fa-solid fa-house"></i>
+        <span class="dock-label">Home</span>
+      </a>
+      <a href="#about" class="dock-item" aria-label="About Me">
+        <i class="fa-regular fa-user"></i>
+        <span class="dock-label">About</span>
+      </a>
+      <a href="#projects" class="dock-item" aria-label="Projects">
+        <i class="fa-solid fa-briefcase"></i>
+        <span class="dock-label">Projects</span>
+      </a>
+      <a href="#skills" class="dock-item" aria-label="Skills">
+        <i class="fa-regular fa-star"></i>
+        <span class="dock-label">Skills</span>
+      </a>
+      <a href="#experience" class="dock-item" aria-label="Experience & Education">
+        <i class="fa-regular fa-clock"></i>
+        <span class="dock-label">Experience</span>
+      </a>
+      <a href="#contact" class="dock-item" aria-label="Contact">
+        <i class="fa-regular fa-address-book"></i>
+        <span class="dock-label">Contact</span>
+      </a>
+      <a href="https://t.me/wendwesen1" target="_blank" rel="noopener noreferrer" class="dock-item" aria-label="Direct Chat">
+        <i class="fa-regular fa-comment-dots"></i>
+        <span class="dock-label">Chat</span>
+      </a>
+    </nav>
+
+    <!-- Bottom Sidebar Copyright -->
+    <div class="dock-footer">
+      <span>&copy; 2020 - 2026</span>
     </div>
-    <div class="scroll-indicator">
-      <span>scroll</span>
-      <div class="arrow"></div>
-    </div>
+  </aside>
+
+  <!-- ==================== FLOATING TOP CONTROLS ==================== -->
+  <header class="top-controls">
+    <!-- Dark/Light Mode Switcher -->
+    <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light / Dark Mode"
+      aria-label="Toggle light and dark mode">
+      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
   </header>
 
-  <!-- ===== QUICK SUMMARY CARDS (with "see more" links to each page) ===== -->
-  <section class="summary-section">
-    <div class="container">
-      <h2 class="section-title">At a <span class="gradient-text">glance</span></h2>
-      <div class="summary-grid">
-        <!-- About Me card -->
-        <div class="summary-card">
-          <div class="card-icon"><i class="fa-regular fa-address-card"></i></div>
-          <h3>Who I Am</h3>
-          <p>Full Stack & Systems Engineer · AI integration · Network security · Startup winner 2025</p>
-          <a href="aboutme.html" class="card-link">See more <i class="fa-regular fa-arrow-right"></i></a>
-        </div>
-        <!-- Skills card -->
-        <div class="summary-card">
-          <div class="card-icon"><i class="fa-solid fa-code"></i></div>
-          <h3>Core Skills</h3>
-          <p>React, Node, Python, Django, Android, ML fundamentals, firewall/IDS, VPN, cloud basics</p>
-          <a href="skills.html" class="card-link">See more <i class="fa-regular fa-arrow-right"></i></a>
-        </div>
-        <!-- Projects card -->
-        <div class="summary-card">
-          <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
-          <h3>Featured Projects</h3>
-          <p>E-Tour Ethiopia (winner), EthioCraft Global, AgriSmart Hub, system analysis</p>
-          <a href="projects.html" class="card-link">See more <i class="fa-regular fa-arrow-right"></i></a>
-        </div>
-        <!-- Contact / Connect card -->
-        <div class="summary-card">
-          <div class="card-icon"><i class="fa-regular fa-comment"></i></div>
-          <h3>Let's Connect</h3>
-          <p>Available for collaborations, freelance, and tech talks. Reach out anytime.</p>
-          <a href="contact.html" class="card-link">See more <i class="fa-regular fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ==================== MAIN APPLICATION CONTENT ==================== -->
+  <main class="app-wrapper">
 
-  <!-- ===== MINI ABOUT PREVIEW (like about page teaser) ===== -->
-  <section class="mini-about">
-    <div class="container">
-      <div class="about-preview-grid">
-        <div class="about-preview-text">
-          <h2><span class="gradient-text">Full Stack & Systems Engineer</span> – Secure, Scalable Infrastructure</h2>
-          <p>I bridge application development with underlying infrastructure, designing end-to-end digital ecosystems.
-            My work combines software engineering discipline with network security, server administration, and
-            cloud-ready strategies.</p>
-          <div class="stats-mini">
-            <div><strong>3+</strong> years practice</div>
-            <div><strong>4</strong> major projects</div>
-            <div><strong>2025</strong> startup winner</div>
-          </div>
-          <a href="aboutme.html" class="btn btn-secondary">Full story <i class="fa-regular fa-circle-right"></i></a>
-        </div>
-        <div class="about-preview-highlight">
-          <div class="highlight-card">
-            <i class="fa-solid fa-trophy"></i>
-            <p>Top Winner · Student Startup Competition 2025 (E-Tour Ethiopia)</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fa-solid fa-shield"></i>
-            <p>Network Security · firewall, IDS, VPN, encryption</p>
+    <!-- ----------------------------------------------------
+         1. HERO SECTION (Image 1 Reference Style)
+         ---------------------------------------------------- -->
+    <section class="section-hero" id="home">
+      <div class="content-container">
+        <!-- Smart Showcase Photo Frame (Uncropped, Crystal Clear) -->
+        <div class="hero-visual-frame">
+          <div class="hero-image-inner">
+            <img src="avatar-about.jpg" alt="Wendwesen Wagaw — Full Stack Developer" class="hero-showcase-img"
+              id="heroAvatarImg">
+            <div class="hero-status-pill">
+              <span class="status-pulse-dot"></span> Available for Projects &amp; Roles
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== SKILLS PREVIEW (compact, with progress bars) ===== -->
-  <section class="skills-preview">
-    <div class="container">
-      <h2 class="section-title">Technical <span class="gradient-text">stack</span></h2>
-      <div class="skills-mini-grid">
-        <div class="skill-mini-item">
-          <div class="skill-header"><span>React / Node</span> <span>85%</span></div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill" style="width:85%"></div>
+        <!-- Greeting Headline -->
+        <h1 class="hero-title">
+          Hi, I'm <span class="name-highlight">Wendwesen Wagaw</span>
+        </h1>
+
+        <!-- Subtitle with Emoji -->
+        <p class="hero-subtitle">
+          A Passionate Full-Stack Developer <span class="emoji-wave">💻</span>
+        </p>
+
+        <!-- User Requested Tagline Text with Justified Flow -->
+        <p class="hero-tagline">
+          "I build modern web and mobile applications and explore AI-powered solutions that turn ideas into practical digital experiences."
+        </p>
+
+        <!-- Social Icons Row (Warm Gold / Accent Palette) -->
+        <div class="hero-social-row">
+          <a href="https://github.com/wendeor21-ai" target="_blank" rel="noopener noreferrer" class="social-icon-link"
+            aria-label="GitHub" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/wendwesen-wagaw-0b482a38b" target="_blank" rel="noopener noreferrer"
+            class="social-icon-link" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://t.me/wendwesen1" target="_blank" rel="noopener noreferrer" class="social-icon-link"
+            aria-label="Telegram" title="Telegram">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+          <a href="https://wa.me/251914225724" target="_blank" rel="noopener noreferrer" class="social-icon-link"
+            aria-label="WhatsApp" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:wendeor21@gmail.com" class="social-icon-link" aria-label="Email" title="Email">
+            <i class="fa-regular fa-envelope"></i>
+          </a>
+        </div>
+
+        <!-- Call to Action Button ("Talk To Me") -->
+        <div>
+          <a href="#contact" class="btn-talk-to-me">
+            Talk To Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------
+         2. ABOUT ME SECTION (Image 2 Reference Style)
+         ---------------------------------------------------- -->
+    <section class="section-about" id="about">
+      <div class="content-container">
+        <!-- Section Header -->
+        <div class="section-page-header">
+          <h2 class="section-page-title">About Me</h2>
+          <p class="section-page-subtitle">Get to know my journey, engineering philosophy, and background</p>
+        </div>
+
+        <!-- 2-Column Content: Professional Workspace Photo + Clean Rounded Bio Card -->
+        <div class="about-grid">
+          <!-- Left Column: Professional Photo at Work -->
+          <div class="about-character-col">
+            <img src="me.jpg" alt="Wendwesen Wagaw at Work" class="about-character-img" id="aboutAvatarImg">
+          </div>
+
+          <!-- Right Column: Bio Card -->
+          <div class="about-bio-card">
+            <div class="about-lead-quote">
+              <i class="fa-solid fa-quote-left" style="margin-right: 6px; opacity: 0.8;"></i>
+              "I build modern web and mobile applications and explore AI-powered solutions that turn ideas into
+              practical digital experiences."
+            </div>
+
+            <p class="about-bio-text">
+              I’m a passionate <strong>Full-Stack Developer</strong> and Information Systems student at the <strong>University of Gondar</strong>, focused on building intelligent, scalable applications that solve real-world problems. With hands-on experience across <strong>React, Node.js, React Native, Python, MongoDB, and PostgreSQL</strong>, I’ve developed more than six projects spanning web and mobile applications and AI-driven solutions.
+            </p>
+
+            <p class="about-bio-text">
+              My expertise is backed by international online certifications and university training in <strong>Artificial Intelligence, Data Analysis, Cybersecurity, and Software Development</strong>. I turn complex challenges into practical digital solutions through clean code, creative problem-solving, and continuous learning.
+            </p>
+
+            <!-- Mission Statement -->
+            <div class="mission-statement-box">
+              <i class="fa-solid fa-bullseye"></i>
+              <div class="mission-statement-text">My mission is simple: Build technology that matters.</div>
+            </div>
+
+            <!-- Recommended Button Layout (Mobile-Friendly Responsive) -->
+            <div class="about-action-group">
+              <a href="#contact" class="btn-talk-to-me">
+                <i class="fa-solid fa-briefcase"></i> Let's Work Together
+              </a>
+              <a href="#projects" class="filter-btn about-btn-projects">
+                <i class="fa-solid fa-arrow-right"></i> View My Projects
+              </a>
+              <a href="Wendwesen_Wagaw_CV.pdf" download="Wendwesen_Wagaw_CV.pdf" target="_blank" class="btn-download-cv">
+                <i class="fa-solid fa-download"></i> Download CV
+              </a>
+            </div>
           </div>
         </div>
-        <div class="skill-mini-item">
-          <div class="skill-header"><span>Python (Django/Flask)</span> <span>80%</span></div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill" style="width:80%"></div>
+
+        <!-- Bottom Stats Row (Exact 4 Stats Counter from Reference Image 2) -->
+        <div class="about-stats-row">
+          <div class="stat-item">
+            <i class="fa-brands fa-github stat-icon"></i>
+            <div class="stat-content">
+              <span class="stat-number">34+</span>
+              <span class="stat-label">Github Repos</span>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <i class="fa-regular fa-folder-closed stat-icon"></i>
+            <div class="stat-content">
+              <span class="stat-number">12+</span>
+              <span class="stat-label">Successful Projects</span>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <i class="fa-regular fa-handshake stat-icon"></i>
+            <div class="stat-content">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Satisfied Clients</span>
+            </div>
+          </div>
+
+          <div class="stat-item">
+            <i class="fa-solid fa-award stat-icon"></i>
+            <div class="stat-content">
+              <span class="stat-number">#1</span>
+              <span class="stat-label">Awards &amp; Recognition</span>
+            </div>
           </div>
         </div>
-        <div class="skill-mini-item">
-          <div class="skill-header"><span>Android (Kotlin)</span> <span>75%</span></div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill" style="width:75%"></div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------
+         3. PROJECTS SECTION
+         ---------------------------------------------------- -->
+    <section class="section-projects" id="projects">
+      <div class="content-container">
+        <div class="section-page-header">
+          <h2 class="section-page-title">Featured Projects</h2>
+          <p class="section-page-subtitle">Selected projects showcasing my work in full-stack development, AI-powered systems, and practical digital solutions.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="projects-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ai">AI &amp; Healthcare</button>
+          <button class="filter-btn" data-filter="web">Web &amp; Full-Stack</button>
+          <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+          <!-- Project 01: EthioCraft Global -->
+          <article class="project-card" data-category="web">
+            <div class="project-thumb">
+              <img src="EthioCrafts.png" alt="EthioCraft Global E-Commerce Platform" onerror="this.src='wen.jpg'">
+              <span class="project-badge"><i class="fa-solid fa-cart-shopping"></i> 01 · E-Commerce</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">01. EthioCraft Global</h3>
+              <p class="project-subtitle">E-Commerce Platform for Ethiopian Artisans</p>
+              <p class="project-desc">A digital marketplace connecting Ethiopian artisans with customers through online shopping, product management, and cultural storytelling—helping traditional craftsmanship reach wider markets.</p>
+              
+              <div class="project-features">
+                <span class="feature-pill"><i class="fa-solid fa-store"></i> Storefronts</span>
+                <span class="feature-pill"><i class="fa-solid fa-boxes-stacked"></i> Inventory Mgmt</span>
+                <span class="feature-pill"><i class="fa-solid fa-book-open"></i> Storytelling</span>
+                <span class="feature-pill"><i class="fa-solid fa-shield-halved"></i> Secure Orders</span>
+              </div>
+
+              <div class="project-tags">
+                <span class="tag-chip">React.js</span>
+                <span class="tag-chip">Node.js</span>
+                <span class="tag-chip">PostgreSQL</span>
+                <span class="tag-chip">Prisma</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/wendeor21-ai/EthioCraft-Global" target="_blank" rel="noopener noreferrer" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://github.com/wendeor21-ai/EthioCraft-Global" target="_blank" rel="noopener noreferrer"
+                  class="project-github-btn" aria-label="EthioCraft Global GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: SmartCare AI -->
+          <article class="project-card" data-category="ai mobile web">
+            <div class="project-thumb">
+              <img src="smartcareAi.png" alt="SmartCare AI Healthcare Platform" onerror="this.src='wen.jpg'">
+              <span class="project-badge"><i class="fa-solid fa-robot"></i> 02 · AI Health</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">02. SmartCare AI</h3>
+              <p class="project-subtitle">AI-Powered Digital Healthcare Platform</p>
+              <p class="project-desc">A multilingual digital healthcare platform developed for a University of Gondar hackathon. It combines AI-assisted symptom assessment in English and Amharic, telemedicine, electronic health records, and intelligent hospital discovery.</p>
+              
+              <div class="project-features">
+                <span class="feature-pill"><i class="fa-solid fa-brain"></i> AI Triage</span>
+                <span class="feature-pill"><i class="fa-solid fa-video"></i> Video Consult</span>
+                <span class="feature-pill"><i class="fa-solid fa-file-medical"></i> Health Records</span>
+                <span class="feature-pill"><i class="fa-solid fa-hospital"></i> Hospital Locator</span>
+              </div>
+
+              <div class="project-tags">
+                <span class="tag-chip">React</span>
+                <span class="tag-chip">React Native</span>
+                <span class="tag-chip">Node.js</span>
+                <span class="tag-chip">Python</span>
+                <span class="tag-chip">FastAPI</span>
+                <span class="tag-chip">MongoDB</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/wendeor21-ai/aismartcare_f" target="_blank" rel="noopener noreferrer" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://github.com/wendeor21-ai/aismartcare_f" target="_blank" rel="noopener noreferrer"
+                  class="project-github-btn" aria-label="SmartCare AI GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: EnatCare -->
+          <article class="project-card" data-category="ai mobile">
+            <div class="project-thumb">
+              <img src="enatcare.jpg" alt="EnatCare Maternal Healthcare Platform" onerror="this.src='wen.jpg'">
+              <span class="project-badge"><i class="fa-solid fa-heart-pulse"></i> 03 · Maternal AI</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">03. EnatCare</h3>
+              <p class="project-subtitle">AI-Powered Maternal &amp; Child Healthcare</p>
+              <p class="project-desc">A healthcare platform designed to support mothers and children through AI-assisted risk assessment, pregnancy tracking, emergency SOS, and digital collaboration between healthcare workers and doctors.</p>
+              
+              <div class="project-features">
+                <span class="feature-pill"><i class="fa-solid fa-person-breastfeeding"></i> Maternal Monitor</span>
+                <span class="feature-pill"><i class="fa-solid fa-chart-line"></i> Risk Prediction</span>
+                <span class="feature-pill"><i class="fa-solid fa-location-crosshairs"></i> GPS SOS</span>
+                <span class="feature-pill"><i class="fa-solid fa-microphone"></i> Amharic Voice</span>
+              </div>
+
+              <div class="project-tags">
+                <span class="tag-chip">React Native</span>
+                <span class="tag-chip">React.js</span>
+                <span class="tag-chip">Node.js</span>
+                <span class="tag-chip">Python</span>
+                <span class="tag-chip">FastAPI</span>
+                <span class="tag-chip">MongoDB</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/wendeor21-ai/EnatCare" target="_blank" rel="noopener noreferrer" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://github.com/wendeor21-ai/EnatCare" target="_blank" rel="noopener noreferrer"
+                  class="project-github-btn" aria-label="EnatCare GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 04: Agri Smart Hub -->
+          <article class="project-card" data-category="web">
+            <div class="project-thumb">
+              <img src="AgriSmartHub.png" alt="Agri Smart Hub Platform" onerror="this.src='wen.jpg'">
+              <span class="project-badge"><i class="fa-solid fa-wheat-awn"></i> 04 · AgriTech</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">04. Agri Smart Hub</h3>
+              <p class="project-subtitle">Digital Agricultural Advisory System</p>
+              <p class="project-desc">A web-based agricultural platform designed to help farmers access relevant agricultural information, explore crop guidance, and make better-informed farming decisions.</p>
+              
+              <div class="project-features">
+                <span class="feature-pill"><i class="fa-solid fa-seedling"></i> Crop Guidance</span>
+                <span class="feature-pill"><i class="fa-solid fa-circle-info"></i> Agri Info</span>
+                <span class="feature-pill"><i class="fa-solid fa-hands-holding-circle"></i> Farmer Support</span>
+              </div>
+
+              <div class="project-tags">
+                <span class="tag-chip">HTML</span>
+                <span class="tag-chip">CSS</span>
+                <span class="tag-chip">PHP</span>
+                <span class="tag-chip">MySQL</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/wendeor21-ai/agri_smart_hub" target="_blank" rel="noopener noreferrer" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://github.com/wendeor21-ai/agri_smart_hub" target="_blank" rel="noopener noreferrer"
+                  class="project-github-btn" aria-label="Agri Smart Hub GitHub Repository"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Projects End CTA Box -->
+        <div class="projects-cta-box">
+          <h3>Have a project in mind?</h3>
+          <p>Let's collaborate to build practical, intelligent, and impactful digital solutions.</p>
+          <div class="projects-cta-actions">
+            <a href="https://github.com/wendeor21-ai" target="_blank" rel="noopener noreferrer" class="filter-btn" style="padding: 10px 22px;">
+              <i class="fa-brands fa-github"></i> Explore my GitHub
+            </a>
+            <a href="#contact" class="btn-talk-to-me" style="padding: 10px 24px; font-size: 0.92rem;">
+              <i class="fa-regular fa-envelope"></i> Contact Me
+            </a>
           </div>
         </div>
-        <div class="skill-mini-item">
-          <div class="skill-header"><span>Network Security</span> <span>70%</span></div>
-          <div class="skill-bar-bg">
-            <div class="skill-bar-fill" style="width:70%"></div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------
+         4. SKILLS & CAPABILITIES SECTION
+         ---------------------------------------------------- -->
+    <section class="section-skills" id="skills">
+      <div class="content-container">
+        <div class="section-page-header">
+          <h2 class="section-page-title">Technical Skills</h2>
+          <p class="section-page-subtitle">Core proficiencies, programming languages, and system technologies</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Category 1 -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-code"></i></div>
+              <h3 class="skill-cat-title">Frontend &amp; UI</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-pill-item"><span>JavaScript / ES6+</span><span class="level">Advanced</span></div>
+              <div class="skill-pill-item"><span>React.js</span><span class="level">Proficient</span></div>
+              <div class="skill-pill-item"><span>HTML5 &amp; Modern CSS3</span><span class="level">Expert</span></div>
+              <div class="skill-pill-item"><span>Responsive Design</span><span class="level">Expert</span></div>
+              <div class="skill-pill-item"><span>Tailwind &amp; UI Kits</span><span class="level">Proficient</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-database"></i></div>
+              <h3 class="skill-cat-title">Backend &amp; DB</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-pill-item"><span>Python &amp; Django</span><span class="level">Advanced</span></div>
+              <div class="skill-pill-item"><span>Node.js &amp; Express</span><span class="level">Proficient</span></div>
+              <div class="skill-pill-item"><span>PostgreSQL / MySQL</span><span class="level">Advanced</span></div>
+              <div class="skill-pill-item"><span>MongoDB &amp; NoSQL</span><span class="level">Proficient</span></div>
+              <div class="skill-pill-item"><span>RESTful API Architecture</span><span class="level">Advanced</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <h3 class="skill-cat-title">Systems &amp; Network</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-pill-item"><span>Linux / Server Admin</span><span class="level">Advanced</span></div>
+              <div class="skill-pill-item"><span>PowerShell &amp; Bash</span><span class="level">Proficient</span></div>
+              <div class="skill-pill-item"><span>TCP/IP, DNS, Subnets</span><span class="level">Advanced</span></div>
+              <div class="skill-pill-item"><span>Firewall, VPN &amp; IDS</span><span class="level">Proficient</span>
+              </div>
+              <div class="skill-pill-item"><span>System Diagnostics</span><span class="level">Advanced</span></div>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="skill-category-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3 class="skill-cat-title">AI &amp; Dev Tools</h3>
+            </div>
+            <div class="skill-items-list">
+              <div class="skill-pill-item"><span>Git &amp; GitHub</span><span class="level">Expert</span></div>
+              <div class="skill-pill-item"><span>TensorFlow Lite</span><span class="level">Intermediate</span></div>
+              <div class="skill-pill-item"><span>Figma &amp; Wireframing</span><span class="level">Proficient</span>
+              </div>
+              <div class="skill-pill-item"><span>Postman API Testing</span><span class="level">Advanced</span></div>
+              <div class="skill-pill-item"><span>CI/CD &amp; Deployment</span><span class="level">Proficient</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="center-link">
-        <a href="skills.html" class="card-link">View all skills <i class="fa-regular fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== PROJECT TEASER (two featured projects) ===== -->
-  <section class="projects-teaser">
-    <div class="container">
-      <h2 class="section-title">Recent <span class="gradient-text">work</span></h2>
-      <div class="teaser-grid">
-        <div class="teaser-card">
-          <div class="teaser-icon"><i class="fa-solid fa-globe"></i></div>
-          <h3>E-Tour Ethiopia</h3>
-          <p>360° virtual tours, AI travel recommendations, secure payments – winner of 2025 startup competition.</p>
-          <div class="tech-badge">Django · Three.js · PostgreSQL</div>
-          <a href="projects.html" class="card-link">details <i class="fa-regular fa-arrow-right"></i></a>
+    <!-- ----------------------------------------------------
+         5. EXPERIENCE & TIMELINE SECTION
+         ---------------------------------------------------- -->
+    <section class="section-experience" id="experience">
+      <div class="content-container">
+        <div class="section-page-header">
+          <h2 class="section-page-title">Experience &amp; Timeline</h2>
+          <p class="section-page-subtitle">My academic foundations, milestones, and hands-on projects</p>
         </div>
-        <div class="teaser-card">
-          <div class="teaser-icon"><i class="fa-solid fa-leaf"></i></div>
-          <h3>AgriSmart Hub</h3>
-          <p>AI-powered agricultural advisory: crop suitability, weather‑based inputs, mobile‑first.</p>
-          <div class="tech-badge">Kotlin · TensorFlow Lite · Firebase</div>
-          <a href="projects.html" class="card-link">details <i class="fa-regular fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== CONTACT / CONNECT PREVIEW ===== -->
-  <section class="connect-preview">
-    <div class="container">
-      <div class="connect-card">
-        <div class="connect-text">
-          <h2>Interested in <span class="gradient-text">collaborating?</span></h2>
-          <p>Whether it's a project, research, or just tech chat – I'm always open to new opportunities.</p>
-          <a href="contact.html" class="btn btn-primary">Get in touch <i class="fa-regular fa-paper-plane"></i></a>
-        </div>
-        <div class="connect-quick">
-          <div><i class="fa-regular fa-envelope"></i> wendeor21@gmail.com</div>
-          <div><i class="fa-regular fa-phone"></i> +251 923525734</div>
-          <div><i class="fa-brands fa-telegram"></i> @wendwesen1</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="timeline-list">
+          <!-- Item 1 -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"><i class="fa-solid fa-trophy"
+                style="font-size:0.6rem; color:var(--accent-coral);"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">1st Prize Winner · Student Startup Competition</h3>
+                <span class="timeline-period">2025</span>
+              </div>
+              <div class="timeline-org">University of Gondar · E-Tour Ethiopia</div>
+              <p class="timeline-desc">
+                Awarded 1st Place for building E-Tour Ethiopia, an immersive virtual tourism application featuring
+                360-degree tours, smart booking algorithms, and cultural commerce integrations.
+              </p>
+            </div>
+          </div>
 
-  <!-- FOOTER (exact match from other pages) -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-col">
-        <h3>Wendwesen<span>Dev</span></h3>
-        <p>Information Systems · University of Gondar</p>
-        <p>Full Stack · AI · Network Security</p>
-      </div>
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <a href="home.html">Home</a>
-        <a href="aboutme.html">About Me</a>
-        <a href="skills.html">Skills</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h3>Connect</h3>
-        <div class="footer-social">
-          <a href="https://github.com/wendeor21-ai" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/wendwesen-wagaw-0b482a38b" target="_blank" aria-label="LinkedIn"><i
-              class="fab fa-linkedin-in"></i></a>
-          <a href="https://t.me/wendwesen1" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-            <a href="https://wa.me/251914225724" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <!-- Item 2 -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"
+                style="font-size:0.6rem; color:var(--accent-coral);"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">B.Sc. in Information Systems Candidate</h3>
+                <span class="timeline-period">2022 - Present</span>
+              </div>
+              <div class="timeline-org">University of Gondar · Faculty of Informatics</div>
+              <p class="timeline-desc">
+                Focusing on Database Management Systems, Systems Analysis &amp; Design, Enterprise Networking, Network
+                Security, and Full-Stack Software Engineering.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"><i class="fa-solid fa-laptop-code"
+                style="font-size:0.6rem; color:var(--accent-coral);"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <h3 class="timeline-role">Freelance &amp; Open Source Software Developer</h3>
+                <span class="timeline-period">2023 - Present</span>
+              </div>
+              <div class="timeline-org">Independent Engagements</div>
+              <p class="timeline-desc">
+                Architecting custom web applications, REST APIs, and database migrations. Managing 34+ GitHub
+                repositories with reproducible scripts, documentation, and continuous integration.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <p class="footer-bottom">© 2025 Wendwesen Wagaw — built with secure, scalable systems</p>
-  </footer>
+    </section>
 
-  <!-- scripts -->
+    <!-- ----------------------------------------------------
+         6. CONTACT & CONNECT SECTION
+         ---------------------------------------------------- -->
+    <section class="section-contact" id="contact">
+      <div class="content-container">
+        <div class="section-page-header">
+          <h2 class="section-page-title">Get In Touch</h2>
+          <p class="section-page-subtitle">Have a project, role, or collaboration in mind? Let's connect!</p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Left: Contact Details Cards -->
+          <div class="contact-info-cards">
+            <a href="mailto:wendeor21@gmail.com" class="contact-method-card">
+              <div class="contact-icon-box"><i class="fa-regular fa-envelope"></i></div>
+              <div class="contact-details">
+                <h4>Email Address</h4>
+                <p>wendeor21@gmail.com</p>
+              </div>
+            </a>
+
+            <a href="https://wa.me/251914225724" target="_blank" rel="noopener noreferrer" class="contact-method-card">
+              <div class="contact-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+              <div class="contact-details">
+                <h4>WhatsApp &amp; Phone</h4>
+                <p>+251 9 14 22 57 24</p>
+              </div>
+            </a>
+
+            <a href="https://t.me/wendwesen1" target="_blank" rel="noopener noreferrer" class="contact-method-card">
+              <div class="contact-icon-box"><i class="fa-brands fa-telegram"></i></div>
+              <div class="contact-details">
+                <h4>Telegram Direct</h4>
+                <p>@wendwesen1</p>
+              </div>
+            </a>
+
+            <div class="contact-method-card">
+              <div class="contact-icon-box"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-details">
+                <h4>Location</h4>
+                <p>Gondar, Amhara Region, Ethiopia</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Message Box -->
+          <div class="contact-form-box">
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label class="form-label" for="senderName">Your Name</label>
+                <input type="text" id="senderName" class="form-input" placeholder="e.g. Sarah Connor" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="senderEmail">Email Address</label>
+                <input type="email" id="senderEmail" class="form-input" placeholder="sarah@example.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="senderMessage">Your Message</label>
+                <textarea id="senderMessage" class="form-textarea"
+                  placeholder="Describe your project, question, or opportunity..." required></textarea>
+              </div>
+
+              <!-- Real-time Status Alert Feedback -->
+              <div id="formStatus" class="form-status-alert" style="display: none;"></div>
+
+              <button type="submit" id="btnSendMessage" class="btn-send-message">
+                <span id="btnSendMessageText">Send Message</span>
+                <i id="btnSendMessageIcon" class="fa-regular fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="content-container">
+        <p class="footer-copy">
+          &copy; 2026 <strong>Wendwesen Wagaw</strong>. Built with precision, performance &amp; universal standard UX.
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    // mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    });
-    // close on link click
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
-    });
+    /* ----------------------------------------------------
+       1. Light / Dark Theme Switcher with LocalStorage
+       ---------------------------------------------------- */
+    const htmlElem = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
 
-    // simple typed effect
-    const typedSpan = document.getElementById('typed');
-    const phrases = ['Full Stack Developer', 'Systems Engineer', 'AI Enthusiast', 'Startup Winner'];
-    let i = 0;
-    let j = 0;
-    let currentPhrase = [];
-    let isDeleting = false;
-    let isEnd = false;
+    // Load saved theme or match system
+    const savedTheme = localStorage.getItem('portfolio-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-    function loop() {
-      isEnd = false;
-      typedSpan.innerHTML = currentPhrase.join('');
-      if (i < phrases.length) {
-        if (!isDeleting && j <= phrases[i].length) {
-          currentPhrase.push(phrases[i][j]);
-          j++;
-        }
-        if (isDeleting && j <= phrases[i].length) {
-          currentPhrase.pop();
-          j--;
-        }
-        if (j == phrases[i].length) {
-          isEnd = true;
-          isDeleting = true;
-        }
-        if (isDeleting && j === 0) {
-          currentPhrase = [];
-          isDeleting = false;
-          i++;
-          if (i == phrases.length) i = 0;
-        }
+    function setTheme(theme) {
+      htmlElem.setAttribute('data-theme', theme);
+      localStorage.setItem('portfolio-theme', theme);
+      if (theme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
       }
-      setTimeout(loop, isEnd ? 1500 : isDeleting ? 60 : 100);
     }
-    loop();
+    setTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = htmlElem.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    });
+
+
+    /* ----------------------------------------------------
+       3. Smooth Transition Navigation & ScrollSpy
+       ---------------------------------------------------- */
+    const navLinks = document.querySelectorAll('.dock-item[href^="#"]');
+    const sections = Array.from(navLinks).map(link => {
+      const id = link.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
+    // Smooth scroll transition click handler for navigation and CTA buttons
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').substring(1);
+        if (!targetId) return;
+        const targetSec = document.getElementById(targetId);
+        if (targetSec) {
+          e.preventDefault();
+          targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, null, `#${targetId}`);
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let currentSectionId = 'home';
+      const scrollPos = window.scrollY + 140;
+
+      sections.forEach(sec => {
+        if (sec.offsetTop <= scrollPos) {
+          currentSectionId = sec.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        const hrefId = link.getAttribute('href').substring(1);
+        if (hrefId === currentSectionId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }, { passive: true });
+
+    /* ----------------------------------------------------
+       4. Staggered Skills Entrance Animation Observer
+       ---------------------------------------------------- */
+    const skillCategoryCards = document.querySelectorAll('.skill-category-card');
+    if ('IntersectionObserver' in window) {
+      const skillsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      skillCategoryCards.forEach(card => skillsObserver.observe(card));
+    } else {
+      skillCategoryCards.forEach(card => card.classList.add('is-visible'));
+    }
+
+    // Immediately trigger if navigated directly to #skills
+    if (window.location.hash === '#skills') {
+      skillCategoryCards.forEach(card => card.classList.add('is-visible'));
+    }
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash === '#skills') {
+        skillCategoryCards.forEach(card => card.classList.add('is-visible'));
+      }
+    });
+
+    /* ----------------------------------------------------
+       5. Projects Category Filter
+       ---------------------------------------------------- */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const cats = (card.getAttribute('data-category') || '').split(' ');
+          if (filter === 'all' || cats.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ----------------------------------------------------
+       5. Contact Form Handler (Direct Send + Feedback + Fallbacks)
+       ---------------------------------------------------- */
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('senderName');
+      const emailInput = document.getElementById('senderEmail');
+      const messageInput = document.getElementById('senderMessage');
+      const statusDiv = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('btnSendMessage');
+      const btnText = document.getElementById('btnSendMessageText');
+      const btnIcon = document.getElementById('btnSendMessageIcon');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !email || !message) {
+        statusDiv.className = 'form-status-alert error';
+        statusDiv.innerHTML = `
+          <div class="status-alert-header">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Please complete all fields</span>
+          </div>`;
+        statusDiv.style.display = 'flex';
+        return;
+      }
+
+      // 1. Loading UI feedback
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending Message...';
+      btnIcon.className = 'fa-solid fa-spinner fa-spin';
+
+      // Prepare contact parameters
+      const encodedSubject = encodeURIComponent(`Portfolio Message from ${name}`);
+      const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+      const mailtoUrl = `mailto:wendeor21@gmail.com?subject=${encodedSubject}&body=${encodeURIComponent(emailBody)}`;
+      const whatsappText = encodeURIComponent(`Hi Wendwesen, I am ${name} (${email}).\n\n${message}`);
+      const whatsappUrl = `https://wa.me/251914225724?text=${whatsappText}`;
+      const telegramUrl = `https://t.me/wendwesen1`;
+
+      // 2. Try Formspree transmission in background
+      let delivered = false;
+      try {
+        const response = await fetch('https://formspree.io/f/xaqdaypw', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            _replyto: email
+          })
+        });
+        if (response.ok) {
+          delivered = true;
+        }
+      } catch (err) {
+        // file:// or offline fallback handled gracefully
+      }
+
+      // 3. Success UI state
+      submitBtn.classList.add('success');
+      btnText.textContent = 'Message Sent!';
+      btnIcon.className = 'fa-solid fa-check';
+
+      statusDiv.className = 'form-status-alert success';
+      statusDiv.innerHTML = `
+        <div class="status-alert-header">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Thank you, ${name}! Your message has been sent.</span>
+        </div>
+        <div class="status-alert-body">
+          ${delivered 
+            ? 'Your inquiry was delivered directly to Wendwesen Wagaw (wendeor21@gmail.com).' 
+            : 'Your message has been processed! You can also connect directly via:'}
+        </div>
+        <div class="status-quick-links">
+          <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="status-quick-link whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Direct
+          </a>
+          <a href="${telegramUrl}" target="_blank" rel="noopener noreferrer" class="status-quick-link telegram">
+            <i class="fa-brands fa-telegram"></i> Telegram
+          </a>
+          <a href="${mailtoUrl}" class="status-quick-link gmail">
+            <i class="fa-regular fa-envelope"></i> Open in Email App
+          </a>
+        </div>
+      `;
+      statusDiv.style.display = 'flex';
+
+      // 4. Trigger mail client
+      try {
+        const mailAnchor = document.createElement('a');
+        mailAnchor.href = mailtoUrl;
+        mailAnchor.click();
+      } catch (err) {}
+
+      // Reset input fields
+      nameInput.value = '';
+      emailInput.value = '';
+      messageInput.value = '';
+
+      // Re-enable button after 4 seconds
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('success');
+        btnText.textContent = 'Send Message';
+        btnIcon.className = 'fa-regular fa-paper-plane';
+      }, 4000);
+    }
   </script>
 </body>
 

@@ -22,7 +22,7 @@
     <nav class="navbar">
       <div class="logo">Wendwesen<span>Dev</span></div>
       <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="aboutme.html">About Me</a></li>
         <li><a href="skills.html" class="active">Skills</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -314,35 +314,51 @@
         <div class="footer-links">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="skills.html">Skills</a></li>
             <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div class="footer-social">
           <h3>Connect</h3>
           <div class="social-icons">
-            <a href="https://github.com/wendeor21-ai" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/wendwesen-wagaw-1b9b4a1b7/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/251914225724" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://t.me/wendwesen1" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a href="https://github.com/wendeor21-ai" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/wendwesen-wagaw-0b482a38b" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/251914225724" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/wendwesen1" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 | Created by <strong>Wendwesen</strong> — based on Information Systems, UoG</p>
+        <p>© 2025 | Created by <strong>Wendwesen Wagaw</strong> — Information Systems, University of Gondar</p>
       </div>
     </div>
   </footer>
 
-  <!-- scripts (identical to original) -->
+  <!-- scripts -->
   <script>
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
-    hamburger.addEventListener("click", () => {
-      hamburger.classList.toggle("active");
-      navLinks.classList.toggle("active");
-    });
+    if (hamburger && navLinks) {
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        }
+      });
+    }
 
     // skill bar animation
     const skillBars = document.querySelectorAll('.skill-progress');
@@ -352,20 +368,14 @@
     }
     function animateBars() {
       skillBars.forEach(bar => {
-        if (isInViewport(bar) && bar.style.width === '') {
+        if (isInViewport(bar)) {
           const width = bar.getAttribute('data-width');
-          bar.style.width = width;
+          if (width) bar.style.width = width;
         }
       });
     }
     window.addEventListener('scroll', animateBars);
     window.addEventListener('load', animateBars);
-
-    // hover effect cards
-    document.querySelectorAll('.skill-card').forEach(card => {
-      card.addEventListener('mouseenter', function () { this.style.transform = 'translateY(-10px)'; });
-      card.addEventListener('mouseleave', function () { this.style.transform = 'translateY(0)'; });
-    });
   </script>
 </body>
 

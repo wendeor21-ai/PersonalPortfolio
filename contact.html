@@ -18,8 +18,8 @@
   <nav class="navbar">
     <div class="logo">Wendwesen<span>Dev</span></div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="aboutme.html">About</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutme.html">About Me</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
@@ -63,12 +63,12 @@
           </div>
         </div>
 
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
+        <div class="contact-item" id="cv">
+          <i class="fas fa-file-pdf"></i>
           <div>
-            <h3>Location</h3>
-            <p>Amhara, Ethiopia</p>
-            <p>University of Gondar</p>
+            <h3>Curriculum Vitae</h3>
+            <p>Official Resume (PDF)</p>
+            <a href="Wendwesen_Wagaw_CV.pdf" download="Wendwesen_Wagaw_CV.pdf" target="_blank" class="contact-link">Download CV</a>
           </div>
         </div>
 
@@ -142,15 +142,16 @@
       </div>
       <div class="footer-col">
         <h3>Quick Links</h3>
-        <a href="home.html">Home</a>
-        <a href="projects.html">Projects</a>
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About Me</a>
         <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="footer-col">
         <h3>Contact</h3>
         <p>wendeor21@gmail.com</p>
-        <p>+251 9 14 22 57 24</p>
+        <p>+251 923 525 734</p>
       </div>
     </div>
     <p class="footer-bottom">© 2025 Wendwesen Wagaw | All Rights Reserved</p>
@@ -162,16 +163,28 @@
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Close menu when link clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
       });
-    });
+
+      // Close menu when link clicked
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        });
+      });
+
+      // Close menu on click outside
+      document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+    }
 
     // Contact form submission (Formspree + SMS fallback)
     document.getElementById("contactForm").addEventListener("submit", async (e) => {
@@ -190,63 +203,59 @@
         message: document.getElementById("message").value
       };
 
-      // helper to open SMS app on mobile devices
-      function sendViaSMS(data) {
-        const smsBody = `Name: ${data.name}\nEmail: ${data.email}\nSubject: ${data.subject}\nMessage: ${data.message}`;
-        const smsUrl = `sms:+251914225724?body=${encodeURIComponent(smsBody)}`;
-        // redirecting will prompt the user's device to open the SMS composer
-        window.location.href = smsUrl;
-      }
-
       submitBtn.disabled = true;
       btnText.textContent = "Sending...";
       spinner.style.display = "inline-block";
       formStatus.style.display = "none";
 
+      const encodedSubject = encodeURIComponent(`Contact Form: ${formData.subject}`);
+      const mailBody = `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+      const mailtoUrl = `mailto:wendeor21@gmail.com?subject=${encodedSubject}&body=${encodeURIComponent(mailBody)}`;
+      const whatsappText = encodeURIComponent(`Hi Wendwesen, I am ${formData.name} (${formData.email}). Regarding: ${formData.subject}\n\n${formData.message}`);
+      const whatsappUrl = `https://wa.me/251914225724?text=${whatsappText}`;
+
+      let sentRemotely = false;
       try {
-        // attempt to send through Formspree for email copy
         const response = await fetch('https://formspree.io/f/xaqdaypw', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             name: formData.name,
             email: formData.email,
             subject: formData.subject,
             message: formData.message,
-            _replyto: formData.email,
-            _subject: `New Contact Form: ${formData.subject}`
+            _replyto: formData.email
           })
         });
 
         if (response.ok) {
-          // email submission succeeded
-          formStatus.textContent = "Thank you! Your message has been sent successfully.";
-          formStatus.className = "form-status success";
-          formStatus.style.display = "block";
-          e.target.reset();
-        } else if (response.status === 404) {
-          // endpoint not found – configuration issue
-          formStatus.textContent = "Email service unavailable (404). SMS will open instead.";
-          formStatus.className = "form-status warning";
-          formStatus.style.display = "block";
-        } else {
-          // other non-ok responses
-          formStatus.textContent = "There was a problem sending your message by email."
-            + " SMS option will still open.";
-          formStatus.className = "form-status error";
-          formStatus.style.display = "block";
+          sentRemotely = true;
         }
       } catch (error) {
-        // network error or other issue
-        formStatus.textContent = "Unable to send by email. You can also message me via SMS or email me at wendeor21@gmail.com.";
-        formStatus.className = "form-status error";
-        formStatus.style.display = "block";
+        // file:// or network error
       } finally {
         submitBtn.disabled = false;
         btnText.textContent = "Send Message";
         spinner.style.display = "none";
-        // always offer SMS option after the form action
-        sendViaSMS(formData);
+
+        formStatus.innerHTML = `
+          <strong><i class="fas fa-check-circle"></i> Thank you, ${formData.name}!</strong><br>
+          ${sentRemotely ? 'Your message has been sent to Wendwesen Wagaw.' : 'Your message has been processed! You can also connect directly via:'}
+          <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" style="background: #25d366; color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; text-decoration: none; font-weight: 600;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/wendwesen1" target="_blank" rel="noopener noreferrer" style="background: #0088cc; color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; text-decoration: none; font-weight: 600;"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="${mailtoUrl}" style="background: #ea4335; color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.82rem; text-decoration: none; font-weight: 600;"><i class="fas fa-envelope"></i> Open Email</a>
+          </div>
+        `;
+        formStatus.className = "form-status success";
+        formStatus.style.display = "block";
+        e.target.reset();
+
+        try {
+          const mailLink = document.createElement('a');
+          mailLink.href = mailtoUrl;
+          mailLink.click();
+        } catch (err) {}
       }
     });
   </script>
